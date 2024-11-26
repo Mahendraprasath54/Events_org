@@ -73,9 +73,10 @@ const tournamentSchema = new mongoose.Schema({
     }]
 });
 
-module.exports = {
-    userSchema,
-    eventSchema,
-    registrationSchema,
-    tournamentSchema
-};
+// Create and export models
+const User = mongoose.model('User', userSchema);
+const Event = mongoose.model('Event', eventSchema);
+const Registration = mongoose.model('Registration', registrationSchema);
+const Tournament = mongoose.model('Tournament', tournamentSchema);
+
+module.exports = { User, Event, Registration, Tournament };
