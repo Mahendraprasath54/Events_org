@@ -73,10 +73,29 @@ const tournamentSchema = new mongoose.Schema({
     }]
 });
 
+// Payment Processing Schema
+const paymentSchema = new mongoose.Schema({
+    registration: { type: mongoose.Schema.Types.ObjectId, ref: 'Registration', required: true },
+    paymentMethod: {
+        type: String,
+        enum: ['wallet', 'bank', 'card'],
+        required: true
+    },
+    paymentStatus: {
+        type: String,
+        enum: ['pending', 'processing', 'completed', 'failed'],
+        default: 'pending'
+    },
+    transactionId: String,
+    amount: { type: Number, required: true },
+    paidAt: Date
+});
+
 // Create and export models
 const User = mongoose.model('User', userSchema);
 const Event = mongoose.model('Event', eventSchema);
 const Registration = mongoose.model('Registration', registrationSchema);
 const Tournament = mongoose.model('Tournament', tournamentSchema);
+const Payment = mongoose.model('Payment', paymentSchema);
 
-module.exports = { User, Event, Registration, Tournament };
+module.exports = { User, Event, Registration, Tournament, Payment };

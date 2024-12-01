@@ -1,10 +1,9 @@
-const {Registration} = require('../model');
 const dbFactory = require('../utils/dbfactory');
 
-const addRegistration = (data) => dbFactory.addPayment(Registration, data);
-const getRegistrations = () => dbFactory.getAllRegistrations(Registration);
-const getRegistrationById = (id) => dbFactory.getRegistrationById(Registration, id);
-const updateRegistration = (id, data) => dbFactory.updateRegistration(Registration, id, data);
-const deleteRegistration = (id) => dbFactory.deleteRegistration(Registration, id);
+const addRegistration = (data) => dbFactory.registrationAdd(data);
+const getRegistrations = () => dbFactory.registrationGetAll();
+const getRegistrationById = (id) => dbFactory.registrationGetById(id);
+const updateRegistration = (id, data) => dbFactory.registrationUpdate(id, data);
+const deleteRegistration = (id) => dbFactory.registrationDelete(id);
 
 module.exports = { addRegistration, getRegistrationById, getRegistrations, updateRegistration, deleteRegistration };
